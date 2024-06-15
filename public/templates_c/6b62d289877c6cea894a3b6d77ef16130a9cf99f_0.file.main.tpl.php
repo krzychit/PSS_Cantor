@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-06-15 20:43:04
+/* Smarty version 4.3.4, created on 2024-06-15 21:54:17
   from 'C:\Users\Maja\Desktop\PSS\XAMPP\htdocs\cantor\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_666de0b85abe88_52968249',
+  'unifunc' => 'content_666df16924b779_01082469',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b62d289877c6cea894a3b6d77ef16130a9cf99f' => 
     array (
       0 => 'C:\\Users\\Maja\\Desktop\\PSS\\XAMPP\\htdocs\\cantor\\app\\views\\templates\\main.tpl',
-      1 => 1718476469,
+      1 => 1718481252,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_666de0b85abe88_52968249 (Smarty_Internal_Template $_smarty_tpl) {
+function content_666df16924b779_01082469 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -55,9 +55,9 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 								<!-- Nav -->
 									<nav id="nav">
-										<a href="main.tpl">Strona główna</a>
-										<a href="login.tpl">Zaloguj się</a>
-										<a href="singup.tpl">Zarejestruj się</a>
+										<a href="main">Strona główna</a>
+                                                                                <a href="loginShow">Zaloguj się</a>
+                                                                                <a href="registerShow">Zarejestruj się</a>
 									</nav>
 
 							</div>
@@ -97,7 +97,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                                         <!-- Content by me -->
                                             <div id="content">
                                                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1111187413666de0b85a3681_74355902', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_204703530666df16923d181_87756459', "content");
 ?>
 
                                             </div>
@@ -163,12 +163,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         
 </html><?php }
 /* {block "content"} */
-class Block_1111187413666de0b85a3681_74355902 extends Smarty_Internal_Block
+class Block_204703530666df16923d181_87756459 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1111187413666de0b85a3681_74355902',
+    0 => 'Block_204703530666df16923d181_87756459',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

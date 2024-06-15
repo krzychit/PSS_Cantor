@@ -27,9 +27,9 @@
 
 								<!-- Nav -->
 									<nav id="nav">
-										<a href="main.tpl">Strona główna</a>
-										<a href="login.tpl">Zaloguj się</a>
-										<a href="singup.tpl">Zarejestruj się</a>
+										<a href="main">Strona główna</a>
+                                                                                <a href="loginShow">Zaloguj się</a>
+                                                                                <a href="registerShow">Zarejestruj się</a>
 									</nav>
 
 							</div>

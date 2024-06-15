@@ -5,9 +5,11 @@ namespace app\controllers;
 use core\App;
 use core\Utils;
 use core\RoleUtils;
+use core\SessionUtils;
 use core\ParamUtils;
 use app\forms\LoginForm;
 use app\requests\GetDataForLogIn;
+use app\requests\GetRole;
 
 class LoginCtrl {
 
@@ -65,17 +67,25 @@ class LoginCtrl {
     }
 
     public function action_loginShow() {
-        $this->generateView('main.tpl', ['form' => $this->form]);
+        $this->generateView();
     }
 
     public function action_login() {
-        if ($this->validate()) {
-            //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
-            Utils::addErrorMessage('Poprawnie zalogowano do systemu');
-        } else {
-            //niezalogowany => pozostań na stronie logowania
-            $this->generateView('login.tpl', ['form' => $this->form]);
+        if (!$this->validate()) {
+            $this->generateView();
+            return;
         }
+        
+        $userId = intval($this->userLogin["iduser"]);
+        
+        $roles=GetRole::getRoles($userId);
+        
+        foreach ($roles as $role) {
+            RoleUtils::addRole($role);
+        }
+        
+        SessionUtils::storeObject('user', $this->userLogin);
+        App::getRouter()->redirectTo('main');       
     }
 
     public function action_logout() {

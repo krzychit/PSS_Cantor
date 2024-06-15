@@ -1,6 +1,6 @@
 {extends file="main.tpl"}
 {block "content"}
-    <form action="singup" method="post">
+    <form action="register" method="post">
         <div class="input">
             <label for="name">Imię</label>
             <input type="text" id="name" name="name" value="{$form->name}" />

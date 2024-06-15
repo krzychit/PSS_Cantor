@@ -7,7 +7,9 @@ use core\Utils;
 use core\RoleUtils;
 use core\ParamUtils;
 use app\forms\RegistrationForm;
+use app\requests\GetDataForLogIn;
 use app\requests\EnterRegistrationData;
+use app\requests\GetRole;
 
 class RegistrationCtrl {
     
@@ -50,14 +52,14 @@ class RegistrationCtrl {
             Utils::addErrorMessage('Powtórz hasło');
         }
 
-        if ($this->password != $this->confirm_password) {
+        if ($this->form->password != $this->form->confirm_password) {
             Utils::addErrorMessage('Wprowadzone hasła nie pasują do siebie');
         }
 
         // sprawdzenie, czy użytkownik jest w systemie
-        $this->userLogin = GetDataForLogIn::getDataFromUserTable($this->form->login);
+        $this->userLogin = GetDataForLogIn::getDataFromUserTable($this->form->username);
 
-        if ($userLogin != null) {
+        if ($this->userLogin != null) {
             Utils::addErrorMessage('Użytkownik istnieje już w systemie');
         }
         
@@ -65,21 +67,19 @@ class RegistrationCtrl {
     }
  
     public function action_registerShow() {
-        $this->generateView('singup.tpl', ['form' => $this->form]);
-        return;
+        $this->generateView();
     }
 
     public function action_register() {
         if (!$this->validate()) {
-            $this->generateView('singup.tpl', ['form' => $this->form]);
+            $this->generateView();
             return;
         }
 
         $adduser = EnterRegistrationData::insertDataToUserTable($this->form);
+       
+        App::getRouter()->redirectTo('main');
 
-        //$this->logIn($adduser);
-
-        //App::getRouter()->redirectTo('singup.tpl');
     }
     
     public function generateView() {
