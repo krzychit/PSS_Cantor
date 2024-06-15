@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 4.3.4, created on 2024-06-15 04:37:15
+  from 'C:\Users\Maja\Desktop\PSS\XAMPP\htdocs\cantor\app\views\templates\main.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.4',
+  'unifunc' => 'content_666cfe5b73c863_25194447',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6b62d289877c6cea894a3b6d77ef16130a9cf99f' => 
+    array (
+      0 => 'C:\\Users\\Maja\\Desktop\\PSS\\XAMPP\\htdocs\\cantor\\app\\views\\templates\\main.tpl',
+      1 => 1718419031,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_666cfe5b73c863_25194447 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
+?>
 <!DOCTYPE HTML>
 <!--
 	Halcyonic by HTML5 UP
@@ -7,8 +33,10 @@
 <html>
 	<head>
 		
-                <title>{$page_title|default:"Tytuł domyślny"}</title>
-                <meta name="description" content="{$page_description|default:"Opis domyślny"}">
+                <title><?php echo (($tmp = $_smarty_tpl->tpl_vars['page_title']->value ?? null)===null||$tmp==='' ? "Tytuł domyślny" ?? null : $tmp);?>
+</title>
+                <meta name="description" content="<?php echo (($tmp = $_smarty_tpl->tpl_vars['page_description']->value ?? null)===null||$tmp==='' ? "Opis domyślny" ?? null : $tmp);?>
+">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -68,18 +96,18 @@
 					<div class="container">
                                         <!-- Login -->
                                             <div id="login">
-                                                {block "login"}
-                                                {/block}
+                                                <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_877818786666cfe5b73ae74_21068339', "login");
+?>
+
                                             </div>
 
                                             
 						<div class="row aln-center">
-                                                    {block name=content}
-							<div class="col-4 col-12-medium">
-                                                            
-                                                            <p></p>
-						</div>
-                                                  {/block}  
+                                                    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1900824535666cfe5b73c0e2_95608549', 'content');
+?>
+  
 					</div>
 				</section>
 
@@ -121,4 +149,41 @@
 
 	</body>
         
-</html>
+</html><?php }
+/* {block "login"} */
+class Block_877818786666cfe5b73ae74_21068339 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'login' => 
+  array (
+    0 => 'Block_877818786666cfe5b73ae74_21068339',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+                                                <?php
+}
+}
+/* {/block "login"} */
+/* {block 'content'} */
+class Block_1900824535666cfe5b73c0e2_95608549 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_1900824535666cfe5b73c0e2_95608549',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+							<div class="col-4 col-12-medium">
+                                                            
+                                                            <p></p>
+						</div>
+                                                  <?php
+}
+}
+/* {/block 'content'} */
+}
