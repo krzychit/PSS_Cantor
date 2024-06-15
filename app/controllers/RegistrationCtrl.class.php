@@ -11,6 +11,8 @@ use app\requests\EnterRegistrationData;
 
 class RegistrationCtrl {
     
+    private $form;
+    
     public function __construct() {
         $this->form = new RegistrationForm();       
     }
@@ -40,11 +42,11 @@ class RegistrationCtrl {
             Utils::addErrorMessage('Podaj nazwę użytkownika');
         }
 
-        if (empty ($this->form->password)) {
+        if (empty($this->form->password)) {
             Utils::addErrorMessage('Podaj hasło');
         }
 
-        if (empty ($this->form->confirm_password)) {
+        if (empty($this->form->confirm_password)) {
             Utils::addErrorMessage('Powtórz hasło');
         }
 
@@ -64,18 +66,25 @@ class RegistrationCtrl {
  
     public function action_registerShow() {
         $this->generateView('singup.tpl', ['form' => $this->form]);
+        return;
     }
 
     public function action_register() {
-        if ($this->validate()) {
+        if (!$this->validate()) {
             $this->generateView('singup.tpl', ['form' => $this->form]);
             return;
         }
 
         $adduser = EnterRegistrationData::insertDataToUserTable($this->form);
 
-        $this->logIn($adduser);
+        //$this->logIn($adduser);
 
-        App::getRouter()->redirectTo('singup.tpl');
+        //App::getRouter()->redirectTo('singup.tpl');
+    }
+    
+    public function generateView() {
+        App::getSmarty()->assign('form', $this->form); // dane formularza do widoku
+        
+        App::getSmarty()->display('singup.tpl');
     }    
 }
