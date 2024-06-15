@@ -12,7 +12,7 @@ $conf->db_server = 'localhost';
 $conf->db_name = 'cantordb';
 $conf->db_user = 'root';
 //db_pass - pusty, jesli blad
-$conf->db_pass = '_password';
+$conf->db_pass = '';
 $conf->db_charset = 'utf8';
 
 # ---- Database config - optional values

@@ -12,7 +12,12 @@ use app\requests\GetDataForLogIn;
 class LoginCtrl {
 
     private $form;
-    private $userLogin;
+    //metoda prob i bledow:
+    //private $userLogin;
+    //private $login;
+    //private $isPasswordCorrect;
+    //private $passwordCheck;
+    //private $user;
     
     public function __construct() {
         //stworzenie potrzebnych obiektów
@@ -44,13 +49,13 @@ class LoginCtrl {
             return false;
 
         // sprawdzenie, czy dane logowania poprawne
-        $this->userLogin = GetDataForLogIn::getDataFromUserTable($this->username);
+        $this->userLogin = GetDataForLogIn::getDataFromUserTable($this->form->login);
 
         if ($this->userLogin == null) {
             Utils::addErrorMessage('Nieprawidłowy użytkownik');
         }
 
-        $isPasswordCorrect = passwordCheck($this->password, $this->userLogin['password']);
+        $isPasswordCorrect = password_verify($this->form->password, $this->userLogin['password']);
 
         if (!$isPasswordCorrect) {
             Utils::addErrorMessage('Nieprawidłowe hasło');
