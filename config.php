@@ -9,8 +9,9 @@ $conf->app_root = '/cantor/public';   # project subfolder in domain (relative to
 # ---- Database config - values required by Medoo
 $conf->db_type = 'mysql';
 $conf->db_server = 'localhost';
-$conf->db_name = '_database_name';
-$conf->db_user = '_user';
+$conf->db_name = 'cantordb';
+$conf->db_user = 'root';
+//db_pass - pusty, jesli blad
 $conf->db_pass = '_password';
 $conf->db_charset = 'utf8';
 
