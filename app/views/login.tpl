@@ -1,5 +1,5 @@
 {extends file="main.tpl"}
-{block "login"}
+{block "content"}
     <form action="login" method="post">
         <div class="input">
             <label for="login">Login</label>

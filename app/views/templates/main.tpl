@@ -66,20 +66,14 @@
 				<section id="content">
                                     
 					<div class="container">
-                                        <!-- Login -->
-                                            <div id="login">
-                                                {block "login"}
+                                        <!-- Content by me -->
+                                            <div id="content">
+                                                {block "content"}
                                                 {/block}
                                             </div>
 
                                             
-						<div class="row aln-center">
-                                                    {block name=content}
-							<div class="col-4 col-12-medium">
-                                                            
-                                                            <p></p>
-						</div>
-                                                  {/block}
+
                                             {if count($msgs->getMessages()) > 0}
                                                 <div id="errors">
                                                     {foreach $msgs->getMessages() as $msg}
@@ -88,6 +82,7 @@
                                                 </div>
                                             {/if}
 					</div>
+                                        
 				</section>
 
 			<!-- Footer -->
