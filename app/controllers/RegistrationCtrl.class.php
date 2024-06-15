@@ -12,13 +12,7 @@ use app\requests\EnterRegistrationData;
 class RegistrationCtrl {
     
     public function __construct() {
-        //$this->form = new RegistrationForm();
-        //$this->form->name = '';
-        //$this->form->surname = '';
-        //$this->form->city = '';
-        //$this->form->username = '';
-        //$this->form->password = '';
-        //$this->confirm_password = '';        
+        $this->form = new RegistrationForm();       
     }
     
     public function validate() {     
