@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-06-15 04:37:15
+/* Smarty version 4.3.4, created on 2024-06-15 12:15:36
   from 'C:\Users\Maja\Desktop\PSS\XAMPP\htdocs\cantor\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_666cfe5b73c863_25194447',
+  'unifunc' => 'content_666d69c8343e55_59016310',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b62d289877c6cea894a3b6d77ef16130a9cf99f' => 
     array (
       0 => 'C:\\Users\\Maja\\Desktop\\PSS\\XAMPP\\htdocs\\cantor\\app\\views\\templates\\main.tpl',
-      1 => 1718419031,
+      1 => 1718446513,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_666cfe5b73c863_25194447 (Smarty_Internal_Template $_smarty_tpl) {
+function content_666d69c8343e55_59016310 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -97,7 +97,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                                         <!-- Login -->
                                             <div id="login">
                                                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_877818786666cfe5b73ae74_21068339', "login");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_976294646666d69c83292d6_65571405', "login");
 ?>
 
                                             </div>
@@ -105,9 +105,24 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_877818786666cfe5b7
                                             
 						<div class="row aln-center">
                                                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1900824535666cfe5b73c0e2_95608549', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1227061371666d69c832a398_08599833', 'content');
 ?>
-  
+
+                                            <?php if (count($_smarty_tpl->tpl_vars['msgs']->value->getMessages()) > 0) {?>
+                                                <div id="errors">
+                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
+$_smarty_tpl->tpl_vars['msg']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->do_else = false;
+?>
+                                                        <p><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</p>
+                                                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                                </div>
+                                            <?php }?>
 					</div>
 				</section>
 
@@ -151,12 +166,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1900824535666cfe5b
         
 </html><?php }
 /* {block "login"} */
-class Block_877818786666cfe5b73ae74_21068339 extends Smarty_Internal_Block
+class Block_976294646666d69c83292d6_65571405 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'login' => 
   array (
-    0 => 'Block_877818786666cfe5b73ae74_21068339',
+    0 => 'Block_976294646666d69c83292d6_65571405',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -167,12 +182,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "login"} */
 /* {block 'content'} */
-class Block_1900824535666cfe5b73c0e2_95608549 extends Smarty_Internal_Block
+class Block_1227061371666d69c832a398_08599833 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1900824535666cfe5b73c0e2_95608549',
+    0 => 'Block_1227061371666d69c832a398_08599833',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

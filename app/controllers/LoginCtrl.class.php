@@ -12,7 +12,8 @@ use app\requests\GetDataForLogIn;
 class LoginCtrl {
 
     private $form;
-
+    private $userLogin;
+    
     public function __construct() {
         //stworzenie potrzebnych obiektów
         $this->form = new LoginForm();
@@ -59,7 +60,7 @@ class LoginCtrl {
     }
 
     public function action_loginShow() {
-        $this->generateView('login.tpl', ['form' => $this->form]);
+        $this->generateView('main.tpl', ['form' => $this->form]);
     }
 
     public function action_login() {

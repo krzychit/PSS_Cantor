@@ -79,7 +79,14 @@
                                                             
                                                             <p></p>
 						</div>
-                                                  {/block}  
+                                                  {/block}
+                                            {if count($msgs->getMessages()) > 0}
+                                                <div id="errors">
+                                                    {foreach $msgs->getMessages() as $msg}
+                                                        <p>{$msg->text}</p>
+                                                    {/foreach}
+                                                </div>
+                                            {/if}
 					</div>
 				</section>
 
