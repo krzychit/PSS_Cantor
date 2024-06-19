@@ -29,3 +29,6 @@ function rel_url($params, $smarty)
 
 #assign variables
 #\core\App::getSmarty()->assign('variable',$variable);
+
+$user = \core\SessionUtils::loadObject('user', true);
+\core\App::getSmarty()->assign('user',$user);

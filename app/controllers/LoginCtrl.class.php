@@ -14,12 +14,6 @@ use app\requests\GetRole;
 class LoginCtrl {
 
     private $form;
-    //metoda prob i bledow:
-    //private $userLogin;
-    //private $login;
-    //private $isPasswordCorrect;
-    //private $passwordCheck;
-    //private $user;
     
     public function __construct() {
         //stworzenie potrzebnych obiektów
@@ -51,18 +45,13 @@ class LoginCtrl {
             return false;
 
         // sprawdzenie, czy dane logowania poprawne
-        $this->userLogin = GetDataForLogIn::getDataFromUserTable($this->form->login);
-
-        if ($this->userLogin == null) {
-            Utils::addErrorMessage('Nieprawidłowy użytkownik');
+        $this->userLogin = $this->getDataFromUserTable($this->form->login);
+        
+        if ($this->userLogin == null || !password_verify($this->form->password, $this->userLogin['password'] )) {
+            
+            Utils::addErrorMessage('Nieprawidłowe dane logowania');
         }
-
-        $isPasswordCorrect = password_verify($this->form->password, $this->userLogin['password']);
-
-        if (!$isPasswordCorrect) {
-            Utils::addErrorMessage('Nieprawidłowe hasło');
-        }
-
+              
         return !App::getMessages()->isError();        
     }
 
@@ -75,24 +64,37 @@ class LoginCtrl {
             $this->generateView();
             return;
         }
-        
-        $userId = intval($this->userLogin["iduser"]);
-        
-        $roles=GetRole::getRoles($userId);
-        
-        foreach ($roles as $role) {
-            RoleUtils::addRole($role);
-        }
-        
+        //napisac kolejna funkcje (z bazy pobieranie danych)
+
+        RoleUtils::addRole($this->userLogin['role']);
+
         SessionUtils::storeObject('user', $this->userLogin);
+        
         App::getRouter()->redirectTo('main');       
+    }
+
+    private function getDataFromUserTable(string $username) {
+        $medoo = App::getDB();
+
+        $users = $medoo->select('User', [
+            'iduser',
+            'login',
+            'password',
+            'isactive',
+            'role',
+        ], [
+            'login' => $username,
+            'isactive' => 1
+        ]);
+
+        return isset($users[0] ) ? $users[0] : null;
     }
 
     public function action_logout() {
         // 1. zakończenie sesji
         session_destroy();
         
-        //App::getRouter()->redirectTo('main');
+        App::getRouter()->redirectTo('main');
     }
 
     public function generateView() {

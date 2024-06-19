@@ -1,26 +1,27 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-06-15 21:54:17
+/* Smarty version 4.3.4, created on 2024-06-18 01:33:22
   from 'C:\Users\Maja\Desktop\PSS\XAMPP\htdocs\cantor\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_666df16924b779_01082469',
+  'unifunc' => 'content_6670c7c2bdeab2_00778793',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6b62d289877c6cea894a3b6d77ef16130a9cf99f' => 
     array (
       0 => 'C:\\Users\\Maja\\Desktop\\PSS\\XAMPP\\htdocs\\cantor\\app\\views\\templates\\main.tpl',
-      1 => 1718481252,
+      1 => 1718667199,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:loggedin.tpl' => 1,
   ),
 ),false)) {
-function content_666df16924b779_01082469 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6670c7c2bdeab2_00778793 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -52,13 +53,24 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 								<!-- Logo -->
 									<h1><a href="main.tpl" id="logo">Kantor</a></h1>
+                                                                        <?php $_smarty_tpl->_subTemplateRender("file:loggedin.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 								<!-- Nav -->
 									<nav id="nav">
-										<a href="main">Strona główna</a>
-                                                                                <a href="loginShow">Zaloguj się</a>
-                                                                                <a href="registerShow">Zarejestruj się</a>
-									</nav>
+                                                                            <a href="main">Strona główna</a>
+                                                                                <?php if (!(isset($_smarty_tpl->tpl_vars['user']->value))) {?>										
+                                                                                
+                                                                                    <a href="loginShow">Zaloguj się</a>
+                                                                                
+                                                                                    <a href="registerShow">Zarejestruj się</a>
+
+                                                                                    <?php } else { ?>
+
+                                                                                    <a href="logout">Wyloguj się</a>
+
+                                                                                <?php }?>
+                                                                        </nav>
 
 							</div>
 						</div>
@@ -97,12 +109,12 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                                         <!-- Content by me -->
                                             <div id="content">
                                                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_204703530666df16923d181_87756459', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12761973546670c7c2bd3479_28112756', "content");
 ?>
 
                                             </div>
 
-                                            
+
 
                                             <?php if (count($_smarty_tpl->tpl_vars['msgs']->value->getMessages()) > 0) {?>
                                                 <div id="errors">
@@ -163,17 +175,33 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         
 </html><?php }
 /* {block "content"} */
-class Block_204703530666df16923d181_87756459 extends Smarty_Internal_Block
+class Block_12761973546670c7c2bd3479_28112756 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_204703530666df16923d181_87756459',
+    0 => 'Block_12761973546670c7c2bd3479_28112756',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
+                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['currencies']->value, 'currency');
+$_smarty_tpl->tpl_vars['currency']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['currency']->value) {
+$_smarty_tpl->tpl_vars['currency']->do_else = false;
+?>
+                                                        <div>
+                                                        <div><?php echo $_smarty_tpl->tpl_vars['currency']->value['currencyname'];?>
+ [ <?php echo $_smarty_tpl->tpl_vars['currency']->value['currencycode'];?>
+ ]</div>
+                                                    <div>$ <?php echo $_smarty_tpl->tpl_vars['currency']->value['priceindollars'];?>
+</div>
+                                                </div>
+                                            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                                 <?php
 }
 }

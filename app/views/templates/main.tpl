@@ -24,13 +24,23 @@
 
 								<!-- Logo -->
 									<h1><a href="main.tpl" id="logo">Kantor</a></h1>
+                                                                        {include file="loggedin.tpl"}
 
 								<!-- Nav -->
 									<nav id="nav">
-										<a href="main">Strona główna</a>
-                                                                                <a href="loginShow">Zaloguj się</a>
-                                                                                <a href="registerShow">Zarejestruj się</a>
-									</nav>
+                                                                            <a href="main">Strona główna</a>
+                                                                                {if !isset ($user)}										
+                                                                                
+                                                                                    <a href="loginShow">Zaloguj się</a>
+                                                                                
+                                                                                    <a href="registerShow">Zarejestruj się</a>
+
+                                                                                    {else}
+
+                                                                                    <a href="logout">Wyloguj się</a>
+
+                                                                                {/if}
+                                                                        </nav>
 
 							</div>
 						</div>
@@ -69,10 +79,16 @@
                                         <!-- Content by me -->
                                             <div id="content">
                                                 {block "content"}
+                                                    {foreach from=$currencies item=currency}
+                                                        <div>
+                                                        <div>{$currency['currencyname']} [ {$currency['currencycode']} ]</div>
+                                                    <div>$ {$currency['priceindollars']}</div>
+                                                </div>
+                                            {/foreach}
                                                 {/block}
                                             </div>
 
-                                            
+
 
                                             {if count($msgs->getMessages()) > 0}
                                                 <div id="errors">
