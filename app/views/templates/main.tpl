@@ -11,7 +11,7 @@
                 <meta name="description" content="{$page_description|default:"Opis domyślny"}">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="{$css_url|default:"css/main.css"}" />
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -30,16 +30,16 @@
 									<nav id="nav">
                                                                             <a href="main">Strona główna</a>
                                                                                 {if !isset ($user)}										
-                                                                                
                                                                                     <a href="loginShow">Zaloguj się</a>
-                                                                                
                                                                                     <a href="registerShow">Zarejestruj się</a>
-
                                                                                     {else}
-
+                                                                                        {if $user['role'] == 'Admin'}
+                                                                                            <a href="addUserShow">Dodaj użytkownika</a>
+                                                                                            <a href="usersList">Lista użytkowników</a>
+                                                                                        {/if}
                                                                                     <a href="logout">Wyloguj się</a>
-
                                                                                 {/if}
+                                                                                
                                                                         </nav>
 
 							</div>
@@ -85,11 +85,9 @@
                                                     <div>$ {$currency['priceindollars']}</div>
                                                 </div>
                                             {/foreach}
+                                            {include "exchangecurrency.tpl"}
                                                 {/block}
                                             </div>
-
-
-
                                             {if count($msgs->getMessages()) > 0}
                                                 <div id="errors">
                                                     {foreach $msgs->getMessages() as $msg}
